@@ -7,16 +7,14 @@ let count = 0;
 let curr_page = 0;
 
 function check_valid_data(node){
-    if(!node.checkValidity() || node.value === ""){
-        return false;
-    }
-    return true;
+    return !(!node.checkValidity() || node.value === "");
+
 }
 
 function add_row(){
-    const amount = document.getElementById("row-amount");
-    const status = document.getElementById("row-status");
-    const purpose = document.getElementById("row-purpose");
+    const amount = document.getElementById("row-amount-field");
+    const status = document.getElementById("row-status-field");
+    const purpose = document.getElementById("row-purpose-field");
 
     let cont = true;
     if(!check_valid_data(amount)){
@@ -54,10 +52,14 @@ function add_row(){
 
 
     const row = document.createElement("tr");
+    row.classList.add("data-row");
 
     const amount_cell = row.insertCell(0);
     const status_cell = row.insertCell(1);
     const purpose_cell = row.insertCell(2);
+    amount_cell.classList.add("data-cell");
+    status_cell.classList.add("data-cell");
+    purpose_cell.classList.add("data-cell");
 
     row_array.push(row);
 
@@ -65,7 +67,13 @@ function add_row(){
     display_rows(pages, false)
     rows++;
     count++;
-    amount_cell.textContent = "$" + amount.value;
+
+    const formatCash = Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    }).format(amount.value);
+
+    amount_cell.textContent = formatCash;
     status_cell.textContent = status.value;
     purpose_cell.textContent = purpose.value;
 
@@ -99,11 +107,12 @@ function update_pagination() {
 function display_rows(page, new_page){
     const table = document.getElementById("main-table");
     if(new_page === true){
-        table.innerHTML = "<tr>\n" +
-            "            <th>Amount</th>\n" +
-            "            <th>Status</th>\n" +
-            "            <th>Purpose</th>\n" +
-            "        </tr>";
+        table.innerHTML =
+            "        <tr>\n" +
+            "            <th id=\"row-amount\">Amount</th>\n" +
+            "            <th id=\"row-status\">Status</th>\n" +
+            "            <th id=\"row-purpose\">Purpose</th>\n" +
+            "        </tr>"
         for(let i= (page - 1) * rows_per_page; i < ((page - 1) * rows_per_page) + rows_per_page; i++){
             try{
                 table.appendChild(row_array[i]);

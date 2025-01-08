@@ -1,8 +1,41 @@
-#main-table > tbody > tr > th, #main-table > tbody > tr > td{
+:root{
+    --amount-width: 20%;
+    --status-width: 10%;
+    --purpose-width: 80%;
+}
+
+#main-table{
+    table-layout: fixed;
+    width: 100%;
+}
+
+#main-table > tbody > tr > th{
     border: 1px solid black;
     padding-left: 20px;
     padding-right: 20px;
     text-align: center;
+    background-color: #ffac7b;
+}
+
+.data-row:nth-child(odd){
+    border: 1px solid black;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    background-color: #ededed;
+}
+
+.data-row{
+    border: 1px solid black;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    background-color: white;
+}
+
+.data-cell{
+    border: 1px solid black;
+    word-wrap: break-word;
 }
 
 .required{
@@ -16,8 +49,49 @@
 .row-data{
     width: 20%;
     height: 25px;
-    margin: 2px;
+    margin-bottom: 5px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+#row-amount{
+    width: var(--amount-width);
+}
+#row-status{
+    width: var(--status-width);
+}
+#row-purpose{
+    width: var(--purpose-width);
+}
+
+@media only screen and (max-width: 1200px){
+    .row-data, .row-submit{
+        display: block;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1000px){
+    #row-amount{
+        width: 115px;
+    }
+    #row-status{
+        width: 85px;
+    }
+    #row-purpose{
+        width: var(--purpose-width);
+    }
+}
+
+@media only screen and (max-width: 350px){
+    #row-amount{
+        width: 80px;
+    }
+    #row-status{
+        width: 80px;
+    }
+    #row-purpose{
+        width: 80px
+    }
 }
