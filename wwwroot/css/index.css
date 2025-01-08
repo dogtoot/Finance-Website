@@ -1,0 +1,23 @@
+#main-table > tbody > tr > th, #main-table > tbody > tr > td{
+    border: 1px solid black;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+}
+
+.required{
+    border: 1px solid red;
+}
+
+.valid-data{
+    border: 1px solid black;
+}
+
+.row-data{
+    width: 20%;
+    height: 25px;
+    margin: 2px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}

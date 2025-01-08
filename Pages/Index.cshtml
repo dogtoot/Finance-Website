@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+    @Html.AntiForgeryToken()
+}
+<head>
+    <link rel="stylesheet" href="/css/index.css" asp-append-version="true" >
+    <script src="/js/index.js"></script>
+</head>
+<body>
+    <button type="submit" onclick="add_row();" class="row-submit" id="add-btn" title="Add Row">Add Row</button>
+
+    <label for="row-amount">Amount: </label>
+    <input type="number" class="row-data valid-data" id="row-amount">
+
+    <label for="row-status">Status: </label>
+    <select class="row-data valid-data" id="row-status" required>
+        <option value="">--Please choose an option--</option>
+        <option value="Withdraw">Withdrawal</option>
+        <option value="Deposit">Deposit</option>
+    </select>
+
+    <label for="row-purpose">Purpose: </label>
+    <input type="text" class="row-data valid-data" id="row-purpose">
+
+    <table id="main-table">
+        <tr>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Purpose</th>
+        </tr>
+    </table>
+    <span id="page-span">
+
+    </span>
+</body>
