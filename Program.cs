@@ -1,7 +1,12 @@
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.Extensions.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
+var configuration = builder.Configuration;
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -13,19 +18,15 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-
-
 app.UseHttpsRedirection();
 
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
-
-//app.UseStaticFiles();
-//app.UseDefaultFiles();
 
 app.Run();
