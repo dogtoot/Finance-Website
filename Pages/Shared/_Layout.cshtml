@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="~/FinanceProj.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
-<body>
+<body onload="move_login()">
     <header>
         <nav id="navbar" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand navbar-title" asp-area="" asp-page="/Index">Finance</a>
-                <a class="login">Login</a>
+                <button id="login-btn-sm" class="login">Login</button>
                 <div class="navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
@@ -25,6 +25,7 @@
                         </li>
                     </ul>
                 </div>
+                <button id="login-btn-bg" class="login">Login</button>
             </div>
         </nav>
     </header>

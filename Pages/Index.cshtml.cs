@@ -14,7 +14,7 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-        
+        Console.WriteLine("Started...");
     }
 
     public IActionResult OnPostBuildRow(string message)

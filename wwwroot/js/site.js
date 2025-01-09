@@ -12,3 +12,21 @@
     });
 }
 
+//575px
+window.addEventListener('resize', move_login);
+
+function move_login(){
+    if(window.innerWidth < 575){
+        const login_btn_large = document.getElementById("login-btn-bg");
+        const login_btn_small = document.getElementById("login-btn-sm");
+        login_btn_large.hidden = true;
+        login_btn_small.hidden = false;
+
+    }
+    else{
+        const login_btn_large = document.getElementById("login-btn-bg");
+        const login_btn_small = document.getElementById("login-btn-sm");
+        login_btn_large.hidden = false;
+        login_btn_small.hidden = true;
+    }
+}

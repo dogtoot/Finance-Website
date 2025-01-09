@@ -8,7 +8,6 @@ let curr_page = 0;
 
 function check_valid_data(node){
     return !(!node.checkValidity() || node.value === "");
-
 }
 
 function add_row(){
