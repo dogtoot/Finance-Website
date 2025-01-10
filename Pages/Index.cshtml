@@ -2,6 +2,7 @@
 @model PrivacyModel
 @{
     ViewData["Title"] = "Home";
+    @Html.AntiForgeryToken()
 }
 <h1>@ViewData["Title"]</h1>
 

@@ -16,7 +16,7 @@
         <nav id="navbar" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand navbar-title" asp-area="" asp-page="/Index">Finance</a>
-                <div id="login-btn-sm" class="login">
+                <div id="login-btn-sm" class="login" hidden>
                     <div class="g_id_onload"
                          data-client_id="266457347793-m576lv3ol47er7pp09tciudip2fpq386.apps.googleusercontent.com"
                          data-context="signin"
@@ -44,7 +44,7 @@
                         </li>
                     </ul>
                 </div>
-                <div id="login-btn-bg" class="login">
+                <div id="login-btn-bg" class="login" hidden>
                     <div id="g_id_onload"
                          data-client_id="266457347793-m576lv3ol47er7pp09tciudip2fpq386.apps.googleusercontent.com"
                          data-context="signin"
@@ -83,7 +83,7 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
         function handleCredentialResponse(response) {
-            decodeJwtResponse(response.credential);
+            signIn(response.credential);
         }
     </script>
 

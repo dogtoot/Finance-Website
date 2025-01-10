@@ -31,23 +31,9 @@ function move_login(){
     }
 }
 
-function parseJwt (token) {
-    var base64Url = token.split('.')[1];
-    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-
-    return JSON.parse(jsonPayload);
-}
-
-function decodeJwtResponse(data){
-    signIn(parseJwt(data));
-}
-
 function signIn(data){
     const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
-    fetch(`?handler=Verify`, {
+    fetch(`api/verify`, {
         method: 'POST',
         headers: {
             "RequestVerificationToken": token,
@@ -55,5 +41,5 @@ function signIn(data){
             'Accept': 'application/json'
         },
         body: JSON.stringify(data)
-    });
+    }).then(r => );
 }

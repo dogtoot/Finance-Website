@@ -9,6 +9,8 @@ namespace FinanceProj.Pages;
 
 public class IndexModel : PageModel
 {
+    public static bool logged_in = false;
+
     private readonly ILogger<IndexModel> _logger;
 
     public IndexModel(ILogger<IndexModel> logger)
@@ -16,23 +18,18 @@ public class IndexModel : PageModel
         _logger = logger;
     }
 
-    public void OnGet()
+    public IActionResult OnGet()
     {
-        Console.WriteLine("Started...");
+        if (!logged_in) 
+        {
+            return LocalRedirect("/");
+        }
+        return new JsonResult(new { Success = true });
     }
 
     public IActionResult OnPostBuildRow(string message)
     {
         Console.WriteLine(message);
         return new JsonResult(new { Success = true, Message = "Successfully saved row." });
-    }
-
-    public async Task<IActionResult> OnPostVerify()
-    {
-        Stream req = Request.Body;
-        string json = new StreamReader(req).ReadToEndAsync().Result;
-        GoogleJsonWebSignature.Payload payload = await GoogleJsonWebSignature.ValidateAsync(json);
-
-        return new JsonResult(new { Success = true, Message = "Successfully signed in." });
     }
 }
