@@ -1,36 +1,19 @@
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Google.Apis.Auth.OAuth2;
-using Google.Apis.Auth;
 
 namespace FinanceProj.Pages;
 
-public class IndexModel : PageModel
+public class PrivacyModel : PageModel
 {
-    private readonly ILogger<IndexModel> _logger;
+    private readonly ILogger<PrivacyModel> _logger;
 
-    public IndexModel(ILogger<IndexModel> logger)
+    public PrivacyModel(ILogger<PrivacyModel> logger)
     {
         _logger = logger;
     }
 
     public void OnGet()
     {
-        Console.WriteLine("Started...");
-    }
-
-    public IActionResult OnPostBuildRow(string message)
-    {
-        Console.WriteLine(message);
-        return new JsonResult(new { Success = true, Message = "Successfully saved row." });
-    }
-
-    public IActionResult OnPostVerify()
-    {
-        Stream req = Request.Body;
-        string json = new StreamReader(req).ReadToEndAsync().Result;
-        Console.WriteLine(json);
-        return new JsonResult(new { Success = true, Message = "Successfully signed in." });
     }
 }
+

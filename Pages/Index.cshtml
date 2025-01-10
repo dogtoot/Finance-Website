@@ -1,32 +1,8 @@
 ﻿@page
-@model IndexModel
+@model PrivacyModel
 @{
     ViewData["Title"] = "Home";
-    @Html.AntiForgeryToken()
 }
-<head>
-    <link rel="stylesheet" href="/css/index.css" asp-append-version="true" >
-    <script src="/js/index.js"></script>
-</head>
-<body>
-    <div id="form-container">
-        <button type="submit" onclick="add_row();" class="row-submit" id="add-btn" title="Add Row">Add Row</button>
-        <label class="row-data-label" for="row-amount-field">Amount: </label>
-        <input type="number" class="row-data valid-data" id="row-amount-field">
-        <label class="row-data-label" for="row-status-field">Status: </label>
-        <select class="row-data valid-data" id="row-status-field" required>
-            <option value="">--Please choose an option--</option>
-            <option value="Withdraw">Withdrawal</option>
-            <option value="Deposit">Deposit</option>
-        </select>
-        <label class="row-data-label" for="row-purpose">Purpose: </label>
-        <input type="text" class="row-data valid-data" id="row-purpose-field">
-    </div>
-    <table id="main-table">
-        <tr>
-            <th id="row-amount">Amount</th>
-            <th id="row-status">Status</th>
-            <th id="row-purpose">Purpose</th>
-        </tr>
-    </table>
-</body>
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
