@@ -8,6 +8,8 @@ var configuration = builder.Configuration;
 // Add services to the container.
 services.AddRazorPages();
 
+services.AddMvc();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
