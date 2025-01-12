@@ -41,5 +41,18 @@ function signIn(data){
             'Accept': 'application/json'
         },
         body: JSON.stringify(data)
-    }).then(r => );
+    });
+}
+
+
+function sign(){
+    const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+    fetch(`api/google`, {
+        method: 'POST',
+        headers: {
+            "RequestVerificationToken": token,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    });
 }

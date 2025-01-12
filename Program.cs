@@ -1,4 +1,8 @@
+using FinanceProj;
+using Google;
 using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +14,18 @@ services.AddRazorPages();
 
 services.AddMvc();
 
+services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(configuration.GetConnectionString("SqliteConn")));
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+
+services.AddAuthentication(o => {
+    o.DefaultScheme = "Cookie";
+    o.DefaultChallengeScheme = "Cookie";
+}).AddGoogle(googleOptions =>
+{
+    googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
+    googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+});
+services.AddMvc();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

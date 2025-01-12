@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 
 namespace FinanceProj.Pages;
 
+[Authorize]
 public class IndexModel : PageModel
 {
     public static bool logged_in = false;
@@ -22,7 +23,7 @@ public class IndexModel : PageModel
     {
         if (!logged_in) 
         {
-            return LocalRedirect("/");
+            //return LocalRedirect("/");
         }
         return new JsonResult(new { Success = true });
     }

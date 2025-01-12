@@ -1,11 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace FinanceProj
 {
-    public class UserContext : DbContext
+    public class UserContext
+    {
+
+    }
+    /*public class UserContext //: DbContext
     {
         public DbSet<User> users { get; set; }
         public string DbPath { get; }
+
+        public UserContext(DbContextOptions<UserContext> dbContext) : base(dbContext) { }
 
         public UserContext()
         {
@@ -18,12 +26,8 @@ namespace FinanceProj
         }
     }
 
-    public class User
+    public class User : IdentityUser
     {
         public required string UserId { get; set; }
-        public required string Email { get; set; }
-        public required string UserName {  get; set; }
-    }
-
-    // Remove Migrations : "ef migrations remove"
+    }*/
 }
